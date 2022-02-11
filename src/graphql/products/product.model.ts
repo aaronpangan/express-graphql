@@ -3,11 +3,13 @@ const products = [
     id: 'redshoe',
     description: 'Red Shoe',
     price: 42.12,
+    reviews: [],
   },
   {
     id: 'bluejean',
     description: 'Blue Jeans',
     price: 62.12,
+    reviews: [],
   },
 ];
 
@@ -28,4 +30,14 @@ export function getProductById(id: string) {
   const product = products.find((item) => item.id === id);
 
   return product;
+}
+
+export function addNewProduct(id: string, description: string, price: number) {
+  const newProduct = products.push({
+    id,
+    description,
+    price,
+    reviews: [],
+  });
+  return products[newProduct - 1];
 }
