@@ -3,21 +3,8 @@ import { loadFilesSync } from '@graphql-tools/load-files';
 import path from 'path';
 
 const typesArray = loadFilesSync(path.join(__dirname, '**/*.graphql'));
-
+const resolversArray = loadFilesSync(path.join(__dirname, '**/*.resolver.ts'));
 export const schema = makeExecutableSchema({
   typeDefs: typesArray,
-
-  resolvers: {
-    Query: {
-      products: (parent, args, context, info) => {
-          console.log("MEow")
-          return parent.products;
-      },
-      orders: (parent, args, context, info) => {
-        console.log("MEow2")
-
-
-      },
-    },
-  },
+  resolvers: resolversArray,
 });

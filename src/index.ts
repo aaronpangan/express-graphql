@@ -5,44 +5,11 @@ import { graphqlHTTP } from 'express-graphql';
 
 const app = express();
 
-const root = {
-  products: [
-    {
-      id: 'redshoe',
-      description: 'Red Shoe',
-      price: 42.12,
-    },
-    {
-      id: 'bluejean',
-      description: 'Blue Jeans',
-      price: 62.12,
-    },
-  ],
-
-  orders: [
-    {
-      date: '2005-05-05',
-      subtotal: 80.22,
-      items: [
-        {
-          product: {
-            id: 'redshoe',
-            description: 'Old red Shoe',
-            price: 45.11,
-          },
-          quantity: 2,
-        },
-      ],
-    },
-  ],
-};
-
 app.use(
   '/graphiql',
   graphqlHTTP({
     graphiql: true,
     schema,
-    rootValue: root,
   }),
 );
 
