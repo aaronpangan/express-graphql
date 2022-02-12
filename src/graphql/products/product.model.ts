@@ -41,3 +41,14 @@ export function addNewProduct(id: string, description: string, price: number) {
   });
   return products[newProduct - 1];
 }
+
+export function addProductReview(id: string, rating: number, comment: string) {
+  const product = getProductById(id);
+
+  if (!product) console.log('ID Not Found');
+
+  let reviews: any = product?.reviews;
+  reviews?.push({ rating, comment });
+
+  return reviews;
+}

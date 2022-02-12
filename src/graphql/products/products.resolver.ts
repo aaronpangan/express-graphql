@@ -3,6 +3,7 @@ import {
   getProductsByPrice,
   getProductById,
   addNewProduct,
+  addProductReview,
 } from './product.model';
 
 module.exports = {
@@ -19,6 +20,9 @@ module.exports = {
   Mutation: {
     addNewProduct: (_, args) => {
       return addNewProduct(args.id, args.description, args.price);
+    },
+    addProductReview: (_, { id, rating, comment }) => {
+      return addProductReview(id, rating, comment);
     },
   },
 };
